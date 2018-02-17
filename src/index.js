@@ -1,8 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import App from './components/app';
+import CountryStore from './stores/CountryStore';
+import App from './components/App';
+
+const store = new CountryStore();
 
 ReactDOM.render(
-    <App />,
+        <App store={store} />,
     document.querySelector('.app'));
