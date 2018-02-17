@@ -7,7 +7,7 @@ npm install
 
 Run dev server:
 <code>
-npm run
+npm start
 </code>
 
 App runs on http://localhost:8080
