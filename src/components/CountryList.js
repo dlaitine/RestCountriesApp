@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { observable, action, computed } from 'mobx';
-import { observer } from 'mobx-react';
+import { observer, inject } from 'mobx-react';
 
 import Country from './Country';
 
+@inject('store')
 @observer
 export default class CountryList extends Component {
 
