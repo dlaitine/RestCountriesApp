@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import { Provider } from 'mobx-react';
 
 import CountryList from './CountryList';
+import Sorting from './Sorting';
 
 export default class App extends Component {
 
@@ -10,13 +12,12 @@ export default class App extends Component {
 
     render() {
         return(
-        <div>
-            <button onClick={this.props.store.sortByName}>Sort by name</button>
-            <button onClick={this.props.store.sortByPopulation}>Sort by population</button>
-            <button onClick={this.props.store.sortByArea}>Sort by area</button>
-            <button onClick={this.props.store.onlyEnglishSpeaking}>Only english speaking countries</button>
-            <CountryList store={this.props.store} />
-        </div>
+        <Provider store={this.props.store}>
+            <div>
+                <Sorting />
+                <CountryList />
+            </div>
+        </Provider>
         );
     }
 }
