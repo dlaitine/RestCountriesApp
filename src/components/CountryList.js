@@ -1,26 +1,32 @@
 import React, { Component } from 'react';
-import { observable, action, computed } from 'mobx';
 import { observer, inject } from 'mobx-react';
 
 import Country from './Country';
+import CountryLink from './CountryLink';
 
-@inject('store')
+@inject('store', 'routing')
 @observer
 export default class CountryList extends Component {
 
     getCountries() {
-          var countries = this.props.store.countries.map(country => {
-                   return <Country key={country.name} country = {country} />;
+        const { push } = this.props.routing;
+
+        var countries = this.props.store.countries.map(country => {
+            return <CountryLink country={ country } key={ country.name } onClick={() => push( country.alpha3Code )} />
         });
 
         return (
-            <ul>{ countries }</ul>
+            <ul>
+                { countries }
+            </ul>
         );
     }
 
     render() {
-      
-        return (<div>{ this.getCountries() }</div>);
-
+        return (
+            <div>
+                { this.getCountries() }
+            </div>
+        );
     }
 }

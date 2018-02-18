@@ -10,6 +10,7 @@ export default class CountryStore {
     }
 
     @observable countries = [];
+    @observable selectedCountryCode = "";
 
     @action
     getCountries() {
