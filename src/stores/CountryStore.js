@@ -10,6 +10,7 @@ export default class CountryStore {
     }
 
     @observable countries = [];
+    @observable selectedCountryCode = "";
 
     @action
     getCountries() {
@@ -21,6 +22,14 @@ export default class CountryStore {
             .catch((error) => {
                 console.log(error);
             })
+    }
+
+    @computed get getSelectedCountry() {
+        var country = this.countries.find((country) => {
+            return (country.alpha3Code === this.selectedCountryCode);
+        });
+
+        return country == undefined ? {} : country;
     }
 
     @action

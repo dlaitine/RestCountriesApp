@@ -4,7 +4,8 @@ module.exports = {
     entry: './src/index.js',
     output: {
         path: __dirname + '/build',
-        filename: 'bundle.js'
+        filename: 'bundle.js',
+        publicPath: '/'
     },
     plugins: [
         new webpack.HotModuleReplacementPlugin()
@@ -19,6 +20,8 @@ module.exports = {
                 plugins: ['transform-decorators-legacy', 'transform-class-properties']
             }
         }]
+    },devServer: {
+        historyApiFallback: true,
     },
     resolve: {
         extensions: ['.js', '.jsx']
