@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
-import { observable, action, computed } from 'mobx';
-import { observer, inject } from 'mobx-react';
-
-import Country from './Country';
+import { inject } from 'mobx-react';
 
 @inject('store')
 export default class Sorting extends Component {

@@ -24,14 +24,6 @@ export default class CountryStore {
             })
     }
 
-    @computed get getSelectedCountry() {
-        var country = this.countries.find((country) => {
-            return (country.alpha3Code === this.selectedCountryCode);
-        });
-
-        return country == undefined ? {} : country;
-    }
-
     @action
     sortByName() {
         this.countries = this.countries.sort((a, b) => {

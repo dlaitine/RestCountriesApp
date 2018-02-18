@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import { Provider, observer, inject } from 'mobx-react';
-import { Router, Route, Switch } from 'react-router'
-import { BrowserRouter } from 'react-router-dom';
-import { computed } from 'mobx';
+import { Provider, observer } from 'mobx-react';
+import { Router, Route } from 'react-router'
 
 import Country from './Country';
 import Main from './Main';

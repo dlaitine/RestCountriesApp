@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { observer, inject } from 'mobx-react';
-import { observable, action, computed } from 'mobx';
+import { computed } from 'mobx';
 
-import CountryListLink from './CountryListLink';
+import CountryLink from './CountryLink';
 
 @inject('store', 'routing')
 @observer
@@ -15,7 +15,6 @@ export default class Country extends Component {
     }
 
     getNeighbors(borders) {
-
         const { push } = this.props.routing;
         const countries = this.props.store.countries;
 
@@ -26,7 +25,7 @@ export default class Country extends Component {
         });
  
         return (neighborCountries.map(neighborCountry => {
-            return <CountryListLink country={ neighborCountry } key={ neighborCountry.alpha3Code } onClick={() => {push( neighborCountry.alpha3Code )}} />
+            return <CountryLink country={ neighborCountry } key={ neighborCountry.alpha3Code } onClick={() => {push( neighborCountry.alpha3Code )}} />
         }));
     }
 
