@@ -11,7 +11,7 @@ export default class CountryList extends Component {
     getCountries() {
         const { push } = this.props.routing;
 
-        var countries = this.props.store.countries.map(country => {
+        var countries = this.props.store.filteredCountries.map(country => {
             return <CountryLink country={ country } key={ country.name } onClick={() => push( country.alpha3Code )} />
         });
 

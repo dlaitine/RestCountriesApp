@@ -11,9 +11,10 @@ export default class CountryStore {
 
     @observable countries = [];
     @observable selectedCountryCode = "";
+    @observable onlyEnglishSpeakingFilter = false;
 
     @action
-    getCountries() {
+    fetchCountries() {
         const COUNTRIES_URL = 'https://restcountries.eu/rest/v2/all';
         axios.get(COUNTRIES_URL)
             .then(response => {
@@ -22,6 +23,25 @@ export default class CountryStore {
             .catch((error) => {
                 console.log(error);
             })
+    }
+
+    @computed get
+    filteredCountries() {
+        if(!this.onlyEnglishSpeakingFilter) {
+            return this.countries;
+        }
+        else {
+            return this.countries.filter(country => {
+                for(var i = 0; i < country.languages.length; i++) {
+                    if(country.languages.get(i).iso639_1 === "en") {
+                        return true;
+                    }
+                    else {
+                        return false;
+                    }
+                } 
+            });
+        }
     }
 
     @action
@@ -62,15 +82,6 @@ export default class CountryStore {
 
     @action
     onlyEnglishSpeaking() {
-        this.countries = this.countries.filter(country => {
-            for(var i = 0; i < country.languages.length; i++) {
-                 if(country.languages.get(i).iso639_1 === "en") {
-                    return true;
-                }
-                else {
-                    return false;
-                }
-            } 
-        });
+        this.onlyEnglishSpeakingFilter = !this.onlyEnglishSpeakingFilter;
     }
 }

@@ -25,7 +25,7 @@ const history = syncHistoryWithStore(browserHistory, routingStore);
 export default class App extends Component {
 
     componentWillMount() {
-        countryStore.getCountries();
+        countryStore.fetchCountries();
     }
 
     render() {
