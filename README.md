@@ -1,4 +1,4 @@
-Exercise project for listing EU countries with basic information. Uses open API: https://restcountries.eu/rest/v2/all
+Exercise project for listing all countries with basic information. Uses open API: https://restcountries.eu/rest/v2/all
 
 Install dependencies:
 <code>
