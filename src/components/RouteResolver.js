@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { observer, inject } from 'mobx-react';
 import { computed } from 'mobx';
-import CountryLink from './CountryLink';
 
 import RouteResolverStore from '../stores/RouteResolverStore';
 
@@ -14,7 +13,7 @@ class CountryNode {
 
 const routeResolverStore = new RouteResolverStore();
 
-@inject('store', 'routing')
+@inject('store')
 @observer
 export default class RouteResolver extends Component {
 

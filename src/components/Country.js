@@ -48,7 +48,7 @@ export default class Country extends Component {
                     { country.borders.length == 0 ? "No neighboring countries" : this.getNeighbors( country.borders ) }
                 </ul>
                 <br/>
-                <RouteResolver startCountry={country.alpha3Code} />
+                <RouteResolver startCountry={ country.alpha3Code } />
             </div>
         );
     }

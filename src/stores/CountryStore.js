@@ -10,7 +10,6 @@ export default class CountryStore {
     }
 
     @observable countries = [];
-    @observable selectedCountryCode = "";
     @observable onlyEnglishSpeakingFilter = false;
 
     @action
