@@ -44,6 +44,12 @@ export default class CountryStore {
         }
     }
 
+    getCountry(alpha3Code) {
+        return this.countries.find(country => {
+            return (country.alpha3Code === alpha3Code);
+        });     
+    }
+
     @action
     sortByName() {
         if(this.sortedBy === "name") {

@@ -17,19 +17,9 @@ const routeResolverStore = new RouteResolverStore();
 @observer
 export default class RouteResolver extends Component {
 
-    @computed get countries() {
-        return this.props.store.countries;   
-    }
-    
-    getCountry(code) {
-        return this.countries.find(country => {
-                return (country.alpha3Code === code);
-        });     
-    }
-
     @computed get
     getCountryNameList() {
-        return this.countries.map(country => {
+        return this.props.store.countries.map(country => {
             return <option value={ country.alpha3Code } key={ country.alpha3Code }>{ country.name }</option>
         });
     }
@@ -40,7 +30,7 @@ export default class RouteResolver extends Component {
             return "";
         }
 
-        const startCountry = this.getCountry(start);
+        const startCountry = this.props.store.getCountry(start);
 
         const queue = [new CountryNode(startCountry, startCountry.name)];
         const visited = [startCountry.alpha3Code];
@@ -54,7 +44,7 @@ export default class RouteResolver extends Component {
             }
             topNode.country.borders.map(alpha3Code => {
                 if(!visited.includes(alpha3Code)) {
-                    const country = this.getCountry(alpha3Code);
+                    const country = this.props.store.getCountry(alpha3Code);
                      queue.push(new CountryNode(country, topNode.path + ' --> ' + country.name));
                      visited.push(alpha3Code);
                 }
@@ -81,7 +71,7 @@ export default class RouteResolver extends Component {
                 <br/>
                 <select onChange={ this.onSelectChange } >
                     <option value="">Select country</option>
-                    {this.getCountryNameList}
+                    { this.getCountryNameList }
                 </select>
                 <br/>
                 <br/>

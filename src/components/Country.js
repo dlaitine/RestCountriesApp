@@ -9,20 +9,11 @@ import RouteResolver from './RouteResolver';
 @observer
 export default class Country extends Component {
     
-    @computed get getSelectedCountry() {
-        return this.props.store.countries.find(country => {
-                return (country.alpha3Code == this.props.match.params.countryCode);
-            });     
-    }
-
     getNeighbors(borders) {
         const { push } = this.props.routing;
-        const countries = this.props.store.countries;
 
         const neighborCountries = borders.map(border => {
-            return countries.find(country => {
-                return (country.alpha3Code == border);
-            });            
+            return this.props.store.getCountry(border);         
         });
  
         return (neighborCountries.map(neighborCountry => {
@@ -32,7 +23,7 @@ export default class Country extends Component {
 
     
     render() {
-        const country = this.getSelectedCountry;
+        const country = this.props.store.getCountry(this.props.match.params.countryCode);
 
         if(country == undefined || Object.keys(country).length === 0) {
             return <div>Country not found</div>;
