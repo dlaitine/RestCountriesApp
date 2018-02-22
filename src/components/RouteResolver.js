@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { observer, inject } from 'mobx-react';
 import { computed } from 'mobx';
 
-import RouteResolverStore from '../stores/RouteResolverStore';
-
 class CountryNode {
     constructor(country, path) {
         this.country = country;
@@ -11,11 +9,14 @@ class CountryNode {
     }
 }
 
-const routeResolverStore = new RouteResolverStore();
-
 @inject('store')
 @observer
 export default class RouteResolver extends Component {
+
+    constructor(props) {
+        super(props);
+        this.onSelectChange = this.onSelectChange.bind(this);
+    }
 
     @computed get
     getCountryNameList() {
@@ -60,7 +61,7 @@ export default class RouteResolver extends Component {
     }
 
     onSelectChange(event) {
-        routeResolverStore.setCountry(event.target.value);
+        this.props.store.setTargetCountry(event.target.value);
     }
 
     render() {
@@ -75,7 +76,7 @@ export default class RouteResolver extends Component {
                 </select>
                 <br/>
                 <br/>
-                { this.getRoute(this.props.startCountry, routeResolverStore.country) }
+                { this.getRoute(this.props.startCountry, this.props.store.targetCountry) }
             </div>
         );
     }

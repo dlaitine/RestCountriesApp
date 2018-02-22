@@ -11,6 +11,7 @@ export default class CountryStore {
 
     @observable countries = [];
     @observable onlyEnglishSpeakingFilter = false;
+    @observable targetCountry = "";
     sortedBy = "";
 
     @action
@@ -48,6 +49,11 @@ export default class CountryStore {
         return this.countries.find(country => {
             return (country.alpha3Code === alpha3Code);
         });     
+    }
+
+    @action
+    setTargetCountry(alpha3Code) {
+        this.targetCountry = alpha3Code;
     }
 
     @action
