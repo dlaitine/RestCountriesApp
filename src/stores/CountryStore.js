@@ -11,6 +11,7 @@ export default class CountryStore {
 
     @observable countries = [];
     @observable onlyEnglishSpeakingFilter = false;
+    sortedBy = "";
 
     @action
     fetchCountries() {
@@ -45,6 +46,11 @@ export default class CountryStore {
 
     @action
     sortByName() {
+        if(this.sortedBy === "name") {
+            this.countries = this.countries.reverse();
+            return;
+        }
+
         this.countries = this.countries.sort((a, b) => {
             if(a.name < b.name)
                 return -1;
@@ -53,10 +59,17 @@ export default class CountryStore {
             else
                 return 0;
         });
+
+        this.sortedBy = "name";
     }
 
     @action
     sortByPopulation() {
+        if(this.sortedBy === "population") {
+            this.countries = this.countries.reverse();
+            return;
+        }
+
         this.countries = this.countries.sort((a, b) => {
             if(a.population > b.population)
                 return -1;
@@ -65,10 +78,17 @@ export default class CountryStore {
             else
                 return 0;
         });
+
+        this.sortedBy = "population";
     }
 
     @action
     sortByArea() {
+        if(this.sortedBy === "area") {
+            this.countries = this.countries.reverse();
+            return;
+        }
+
        this.countries = this.countries.sort((a, b) => {
             if(a.area > b.area)
                 return -1;
@@ -77,6 +97,8 @@ export default class CountryStore {
             else
                 return 0;
         });
+
+        this.sortedBy = "area";
     }
 
     @action
