@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 
-const CountryListLink = props => {
+const CountryLink = props => {
     return (
     <li>
         <a onClick={props.onClick} >{ props.country.name }</a>
@@ -9,5 +9,5 @@ const CountryListLink = props => {
     );
 }
 
-export default CountryListLink;
+export default CountryLink;
 
