@@ -5,7 +5,7 @@ import { Router, Route } from 'react-router'
 import Country from './Country';
 import Main from './Main';
 
-import createBrowserHistory from 'history/createBrowserHistory';
+import { createBrowserHistory } from 'history';
 import { RouterStore, syncHistoryWithStore } from 'mobx-react-router';
 import CountryStore from '../stores/CountryStore';
 

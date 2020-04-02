@@ -11,19 +11,16 @@ module.exports = {
         new webpack.HotModuleReplacementPlugin()
     ],
     module: {
-        loaders: [
+        rules: [
             {
+                test: /\.js$/,
                 exclude: /node_modules/,
-            loader: 'babel-loader',
-            query: {
-                presets: ['react', 'es2015'],
-                plugins: ['transform-decorators-legacy', 'transform-class-properties']
+                use: {
+                    loader: 'babel-loader'
+                }
             }
-        }]
+        ]
     },devServer: {
         historyApiFallback: true,
-    },
-    resolve: {
-        extensions: ['.js', '.jsx']
     }
 };

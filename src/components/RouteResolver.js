@@ -32,13 +32,11 @@ export default class RouteResolver extends Component {
         }
 
         const startCountry = this.props.store.getCountry(start);
-
         const queue = [new CountryNode(startCountry, startCountry.name)];
         const visited = [startCountry.alpha3Code];
+        var maxLoops = 500;
 
         while(queue.length > 0) {
-            var maxLoops = 500;
-
             var topNode = queue.shift();
             if(topNode.country.alpha3Code === end) {
                 return topNode.path;

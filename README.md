@@ -10,4 +10,9 @@ Run dev server:
 npm start
 </code>
 
+Build bundle.js (for production)
+<code>
+npm run build
+</code>
+
 App runs on http://localhost:8080
