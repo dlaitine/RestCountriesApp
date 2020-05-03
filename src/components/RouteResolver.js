@@ -15,6 +15,7 @@ export default class RouteResolver extends Component {
 
     constructor(props) {
         super(props);
+        this.props.store.setTargetCountry("");
         this.onSelectChange = this.onSelectChange.bind(this);
     }
 
